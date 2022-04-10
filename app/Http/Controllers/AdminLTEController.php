@@ -23,6 +23,6 @@ class AdminLTEController extends Controller
      */
     public function index()
     {
-        return view('AdminLTE');
+        return view('index');
     }
 }

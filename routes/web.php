@@ -17,8 +17,9 @@ Route::get('/home', function () {
 });
 */
 //Auth::routes();
-Route::get('', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('', 'Auth\LoginController@login');
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::get('logout', 'Auth\LoginController@logout');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register')->name('register.post');
@@ -27,4 +28,4 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::get('/adminLTE', 'AdminLTEController@index')->name('adminLTE');
+Route::get('/', 'AdminLTEController@index');
