@@ -1,3 +1,3 @@
 @extends('layouts.adminLTE')
 
-@section('user',Auth::user()->name)
+@section('user',Auth::user()->username)

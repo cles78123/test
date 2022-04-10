@@ -12,13 +12,13 @@
         <form action="{{ route('login') }}" method="POST">
         {{ csrf_field() }}
         
-          <div class="form-group has-feedback{{ $errors->has('name') ? ' has-error' : '' }}">
-            <input id="name" name="name" type="type" class="form-control" placeholder="帳號" value="{{ old('name') }}" required autofocus>
+          <div class="form-group has-feedback{{ $errors->has('username') ? ' has-error' : '' }}">
+            <input id="text" name="username" type="type" class="form-control" placeholder="帳號" value="{{ old('username') }}" required autofocus>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
             
-            @if ($errors->has('name'))
+            @if ($errors->has('username'))
                 <span class="help-block">
-                    <strong>{{ $errors->first('name') }}</strong>
+                    <strong>{{ $errors->first('username') }}</strong>
                 </span>
             @endif
             
@@ -45,8 +45,8 @@
         </form>
     
         <a href="{{ route('password.request') }}">忘記密碼</a><br>
-        <a href="register.html" class="text-center">註冊帳號</a>
-    
+        <a href=" {{ route('register') }}" class="text-center">註冊帳號</a>
+       
       </div>
       <!-- /.login-box-body -->
     </div>
