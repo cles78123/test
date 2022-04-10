@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminLTEController extends Controller
 {
@@ -23,6 +25,8 @@ class AdminLTEController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $users = User::first();
+        return view('/index', $users);
     }
+
 }

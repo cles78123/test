@@ -145,6 +145,11 @@
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
+      @yield('main')
+
+
+
+
 
     </section>
     <!-- /.content -->
