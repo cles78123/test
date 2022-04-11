@@ -29,12 +29,10 @@
          </div> 
         -->
          
+        @foreach ($users as $user)
+        {{$user->username}}  
+        @endforeach
         
-          @foreach ($users as $user)
-            {
-              {{$user->username}}
-            }
-          @endforeach
         
 
         </div>

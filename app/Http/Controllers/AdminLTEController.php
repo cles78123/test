@@ -25,8 +25,10 @@ class AdminLTEController extends Controller
      */
     public function index()
     {
-        $users = User::first();
-        return view('/index', $users);
+        $users = User::all();
+       
+        
+        return view('/index',compact('users'));
     }
 
 }
