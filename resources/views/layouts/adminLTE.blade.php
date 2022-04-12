@@ -22,10 +22,8 @@
 
     <!-- Logo -->
     <a href="index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>數據網</b></span>
     </a>
 
     <!-- Header Navbar -->
@@ -80,8 +78,7 @@
             <!-- Menu Toggle Button -->
           
             <li class="footer">
-              
-              <a href="{{ route('logout') }}">Sign out</a>
+              <a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i>登出</a>
             </li>
           </li>
 
@@ -103,10 +100,11 @@
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">HEADER</li>
+        <li class="header">功能列表</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-star-o"></i> <span>會員管理</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -115,7 +113,7 @@
 
             <li>
 
-              <a href="#"><i class="fa fa-circle-o"></i>Link in level 2</a></li>
+              <a href="{{ asset('/') }}"><i class="fa fa-circle-o"></i>會員總覽</a></li>
           </ul>
         </li>
         
@@ -130,12 +128,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Page Header
+        會員總覽
         <small>會員 @yield('user')</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
+        <li><a href=""><i class="fa fa-user"></i> 會員管理</a></li>
+        <li class="active">會員總覽</li>
       </ol>
     </section>
 
@@ -213,29 +211,6 @@
         <!-- /.control-sidebar-menu -->
 
       </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-        </form>
-      </div>
-      <!-- /.tab-pane -->
     </div>
   </aside>
   <!-- /.control-sidebar -->
@@ -253,6 +228,7 @@
 <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('bower_components/admin-lte/dist/js/adminlte.min.js') }}"></script>
+
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

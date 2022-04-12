@@ -11,11 +11,6 @@
 |
 */
 
-/*
-Route::get('/home', function () {
-    return view('adminLTE');
-});
-*/
 //Auth::routes();
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
@@ -28,4 +23,11 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::get('/', 'AdminLTEController@index')->name('home');
+Route::get('/', 'AdminLTEController@index');
+Route::get('home', 'AdminLTEController@index');
+Route::get('insert','AdminLTEController@insert');
+Route::post('insert','AdminLTEController@insert')->name('insert');
+Route::get('edit/{user_id}','AdminLTEController@edit');
+Route::post('update','AdminLTEController@update')->name('update');
+Route::get('delete/{user_id}','AdminLTEController@delete');
+Route::post('search', 'AdminLTEController@search');

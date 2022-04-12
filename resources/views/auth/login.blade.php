@@ -44,7 +44,7 @@
           </div>
         </form>
     
-        <a href="{{ route('password.request') }}">忘記密碼</a><br>
+        <a href=" {{ route('password.request') }}">忘記密碼</a><br>
         <a href=" {{ route('register') }}" class="text-center">註冊帳號</a>
        
       </div>
