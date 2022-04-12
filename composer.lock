@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "a92dc8aa5a0773de3e7591647bdb0e64",
+=======
+    "content-hash": "38097f8d767909c587fe28631d9812cf",
+>>>>>>> a18ae92477605c00ddf7aa746f285cbef8eb6813
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1658,6 +1662,7 @@
             "time": "2022-03-04T21:35:40+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "predis/predis",
             "version": "v1.1.10",
             "source": {
@@ -1724,6 +1729,8 @@
             "time": "2022-01-05T17:46:08+00:00"
         },
         {
+=======
+>>>>>>> a18ae92477605c00ddf7aa746f285cbef8eb6813
             "name": "psr/cache",
             "version": "1.0.1",
             "source": {
