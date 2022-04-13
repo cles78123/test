@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\Hamlet;
 use Illuminate\Console\Command;
 use GuzzleHttp\Client;
-
+ 
 
 class Opendata extends Command
 {
@@ -40,11 +40,10 @@ class Opendata extends Command
      */
     public function handle()
     {
-        
         $client = new \GuzzleHttp\Client();
-        $res = $client->request('GET', 'https://ws.kinmen.gov.tw/001/Upload/0/relfile/0/0/2c102756-7365-422b-8357-d8b98f9e5695.json');
+        $res =  $client->request('GET', 'https://ws.kinmen.gov.tw/001/Upload/0/relfile/0/0/2c102756-7365-422b-8357-d8b98f9e5695.json');
         $load = json_decode($res->getBody()->getContents(),true);
-  
+        
         foreach ($load as $key => $i){
             Hamlet::create([
                 'location' => $load[$key]["村別數"],
@@ -61,6 +60,5 @@ class Opendata extends Command
                 'move_out' => $load[$key]["遷出人數"],
             ]);
         };
-        
     }
 }

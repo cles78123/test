@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\Opendata::class,
+        Commands\Redis_life::class,
     ];
 
     /**
@@ -24,9 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        
-        $schedule->command('opendata:take')->everyMinute();
-        
+        $schedule->command('opendate:take')->everyMinute();
+        $schedule->command('redis_life:save')->everyMinute();
     }
 
     /**

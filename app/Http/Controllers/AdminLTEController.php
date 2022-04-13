@@ -92,7 +92,7 @@ class AdminLTEController extends Controller
 
     public function delete($user_id)
     {   
-        if(url()->previous() == 'http://127.0.0.1:8000/'){
+        if(url()->previous() == 'http://127.0.0.1:8000/' or url()->previous() == 'http://127.0.0.1:8000/search'){
             User::destroy($user_id);
             return redirect('/');
         }else{
