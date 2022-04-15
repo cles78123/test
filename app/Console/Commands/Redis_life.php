@@ -14,7 +14,7 @@ class Redis_life extends Command
      *
      * @var string
      */
-    protected $signature = 'redis_life:take';
+    protected $signature = 'redis_life:save';
 
     /**
      * The console command description.

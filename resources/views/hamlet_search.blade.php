@@ -21,5 +21,6 @@
 <td>{{$key->move_out}}</td>
 </tr>
 @endforeach              
+{{ $data->links() }}
 
   @endsection

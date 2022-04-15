@@ -154,11 +154,11 @@
               <div class="box-header">
                 <div class="form-group">
                   <div class="box-body">
-                    <div class="col-sm-5">
+                    <div class="col-sm-6">
                       <form class="form-horizontal" method="POST" action="{{ asset('hamlet/search') }}">
               {{ csrf_field() }}
                         <div class="form-group">
-                          <label class="col-sm-2 control-label" for="inputEmail3">關鍵字</label>
+                          <label class="control-label" for="inputEmail3">關鍵字</label>
                           <div class="input-group input-group hidden-xs" style="width: 500px;">
                             <input autofocus="" class="form-control pull-right" name="keyword" placeholder="請輸入數字" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" type="text">
                             <div class="input-group-btn">
@@ -172,16 +172,17 @@
                           </div>
                         </div>
                     </div>
-                    <div class="col-sm-7">
+                    <div class="col-sm-6">
                       <div class="form-group">
                         <div class="col-sm-12">
-                          <label class="col-sm-2 control-label">類型</label>
+                          <label class="col-sm-3 control-label">類型</label>
                 <input id="huey" name="type" type="radio" value="number_neighbors" checked>鄰數 
                 <input id="huey" name="type" type="radio" value="number_households">戶數 
                 <input id="huey" name="type" type="radio" value="boy">男數 
                 <input id="huey" name="type" type="radio" value="girl">女數 
                 <input id="huey" name="type" type="radio" value="population">總人口數 
                 <input id="huey" name="type" type="radio" value="born_population">出生人數 
+                <br>
                 <input id="huey" name="type" type="radio" value="death_population">死亡人數 
                 <input id="huey" name="type" type="radio" value="marriages">結婚對數 
                 <input id="huey" name="type" type="radio" value="divorce">離婚對數 
@@ -222,6 +223,15 @@
       @yield('main')
 
     </table>
+    <div class="box-footer clearfix">
+      <ul class="pagination pagination-sm no-margin pull-right">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">&raquo;</a></li>
+      </ul>
+    </div>
   </div>
 </div>
 </div>

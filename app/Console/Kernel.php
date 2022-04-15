@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('opendate:take')->everyMinute();
+        $schedule->command('opendata:take')->everyMinute();
         $schedule->command('redis_life:save')->everyMinute();
     }
 
