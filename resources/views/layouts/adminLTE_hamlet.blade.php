@@ -140,10 +140,6 @@
         @yield('title')
         <small>@yield('user')</small>
       </h1>
-          <ol class="breadcrumb">
-          <li><a href=""><i class="fa fa-user"></i> 會員管理</a></li>
-          <li class="active">會員總覽</li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -156,38 +152,82 @@
           <div class="col-xs-12">
             <div class="box">
               <div class="box-header">
-                <h3 class="box-title">
-                    <button type="button" class="btn btn-default btn-block" onclick="location.href='{{ asset('insert') }}'">新增</button></h3>
-                    <div class="box-tools">
-                    <form class="form-horizontal" method="POST" action="{{ asset('search') }}">
-                    {{ csrf_field() }}
-                    <div class="input-group input-group hidden-xs" style="width: 150px;">
-                    <input type="text" name="username" class="form-control pull-right" placeholder="帳號">
-                     <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default">搜尋</button>
+                <div class="form-group">
+                  <div class="box-body">
+                    <div class="col-sm-5">
+                      <form class="form-horizontal" method="POST" action="{{ asset('hamlet/search') }}">
+              {{ csrf_field() }}
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label" for="inputEmail3">關鍵字</label>
+                          <div class="input-group input-group hidden-xs" style="width: 500px;">
+                            <input autofocus="" class="form-control pull-right" name="keyword" placeholder="請輸入數字" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" type="text">
+                            <div class="input-group-btn">
+                              <select class="form-control" name="calculate">
+                                <option value="=">=</option>
+                                <option value=">">></option>
+                                <option value="<"><</option>
+                              </select>
+                              <button class="btn btn-default" type="submit">搜尋</button>
+                            </div>
+                          </div>
+                        </div>
                     </div>
+                    <div class="col-sm-7">
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                          <label class="col-sm-2 control-label">類型</label>
+                <input id="huey" name="type" type="radio" value="number_neighbors" checked>鄰數 
+                <input id="huey" name="type" type="radio" value="number_households">戶數 
+                <input id="huey" name="type" type="radio" value="boy">男數 
+                <input id="huey" name="type" type="radio" value="girl">女數 
+                <input id="huey" name="type" type="radio" value="population">總人口數 
+                <input id="huey" name="type" type="radio" value="born_population">出生人數 
+                <input id="huey" name="type" type="radio" value="death_population">死亡人數 
+                <input id="huey" name="type" type="radio" value="marriages">結婚對數 
+                <input id="huey" name="type" type="radio" value="divorce">離婚對數 
+                <input id="huey" name="type" type="radio" value="move_in">遷入人數 
+                <input id="huey" name="type" type="radio" value="move_out">遷出人數 
+                
+                <select class="form-control" name="location">
+                            <option value="0">村別</option>
+                            <option value="0">全部</option>
+                            @foreach ($location as $key)
+                            <option value="{{$key->location}}">{{$key->location}}</option>  
+                            @endforeach
+                          </select>
+                </form>
+                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </div>
-              <!-- /.box-header -->
-              <div class="box-body table-responsive no-padding">
-                <table class="table table-hover">
-                  <tr>
-                    <th>編號</th>
-                    <th>帳號</th>
-                    <th>註冊時間</th>
-                    <th>電子信箱</th>
-                    <th>功能</th>
-                  </tr>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="box-body table-responsive no-padding">
+                      <table class="table table-hover">
+                        <tr>
+                          <th class="bg-green disabled color-palette">村別數</th>
+                          <th class="bg-green disabled color-palette">時間</th>
+                          <th class="bg-green disabled color-palette">鄰數</th>
+                          <th class="bg-green disabled color-palette">戶數</th>
+                          <th class="bg-green disabled color-palette">男數</th>
+                          <th class="bg-green disabled color-palette">女數</th>
+                          <th class="bg-green disabled color-palette">總人口數</th>
+                          <th class="bg-green disabled color-palette">出生人數</th>
+                          <th class="bg-green disabled color-palette">死亡人數</th>
+                          <th class="bg-green disabled color-palette">結婚對數</th>
+                          <th class="bg-green disabled color-palette">離婚對數</th>
+                          <th class="bg-green disabled color-palette">遷入人數</th>
+                          <th class="bg-green disabled color-palette">遷出人數</th>    
       @yield('main')
 
-                     
-        </table>
-      </div>
-      <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
+    </table>
   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 

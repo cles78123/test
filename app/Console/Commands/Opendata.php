@@ -55,7 +55,7 @@ class Opendata extends Command
                 'born_population' => $load[$key]["出生人數"],
                 'death_population' => $load[$key]["死亡人數"],
                 'marriages' => $load[$key]["結婚對數"],
-                'divorce' => $load[$key]["結婚對數"],
+                'divorce' => $load[$key]["離婚對數"],
                 'move_in' => $load[$key]["遷入人數"],
                 'move_out' => $load[$key]["遷出人數"],
             ]);

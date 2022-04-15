@@ -31,3 +31,6 @@ Route::get('edit/{user_id}','AdminLTEController@edit');
 Route::post('update','AdminLTEController@update')->name('update');
 Route::get('delete/{user_id}','AdminLTEController@delete');
 Route::post('search', 'AdminLTEController@search');
+
+Route::get('hamlet', 'HamletController@index');
+Route::post('hamlet/search', 'HamletController@search');

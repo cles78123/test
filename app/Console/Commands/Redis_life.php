@@ -42,11 +42,15 @@ class Redis_life extends Command
     {
         $date = Hamlet::max('created_at');
         $data = Hamlet::where('created_at',$date)->get(); 
-        
-        foreach ($data as $key => $i)
-        {
-            Redis::hMSet($data[$key], array(
+
+        $listKey = 'DATA:LIST';
+        $hashKey = 'HASH:DATA:LIST:';
+
+        foreach($data as $key => $i){ 
+            Redis::rpush($listKey,$key);
+            Redis::hMset($hashKey.$key,array(
                 'location' => $data[$key]["location"],
+                'created_at' => $data[$key]["created_at"],
                 'number_neighbors' => $data[$key]["number_neighbors"],
                 'number_households' => $data[$key]["number_households"],
                 'boy' => $data[$key]["boy"],
@@ -59,7 +63,9 @@ class Redis_life extends Command
                 'move_in' => $data[$key]["move_in"],
                 'move_out' => $data[$key]["move_out"],
             ));
-            Redis::expire($data[$key],600);
+            Redis::expire($hashKey.$key,600);
         }
+        Redis::expire($listKey,600);
+       
     }
 }

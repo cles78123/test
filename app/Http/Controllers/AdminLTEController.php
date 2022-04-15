@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Auth;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Console\Scheduling\Schedule;
@@ -102,7 +102,7 @@ class AdminLTEController extends Controller
 
     public function search(Request $user_username)
     {   
-        $users = User::where('username',$user_username->username)->get();
-        return view('/search',compact('users'));
+        $users_search = User::where('username',$user_username->username)->get();
+        return view('/search',compact('users_search')); 
     }
 }
