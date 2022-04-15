@@ -27,7 +27,8 @@ class AdminLTEController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        //搜尋所有會員顯示
         $users = User::all();
         return view('/index',compact('users'));
     }
@@ -36,17 +37,20 @@ class AdminLTEController extends Controller
     {   
         if(isset($data->name))
         {
+            //資料驗證是否重複
             $validator = Validator::make($data->all(), [
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'username' =>  'required|unique:users',
                 'password' => 'required|string|min:6|confirmed',
             ]);
+            //錯誤傳回
             if ($validator->fails()) {
                 return redirect('/insert')
                             ->withErrors($validator)
                             ->withInput();
             }else{
+                //創一個新的
                 User::create([
                     'name' => $data->input('name'),
                     'username' => $data->input('username'),
@@ -62,12 +66,14 @@ class AdminLTEController extends Controller
 
     public function edit($user_id)
     {
+        //取要修改的會員編號
         $user = User::find($user_id);
         return view('/auth/edit',compact('user'));
     }
 
     public function update(Request $data)
     {  
+        //驗證是否有重複(本身除外)
         $validator = Validator::make($data->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,'.'email,'.$data->input('id'),
@@ -75,10 +81,12 @@ class AdminLTEController extends Controller
             'password' => 'required|string|min:6',
         ]);
         if ($validator->fails()) {
+            //錯誤傳回
             return redirect('/edit/'.$data->input('id'))
                         ->withErrors($validator)
                         ->withInput();
         }else{
+            //更新
             User::where('id', $data->input('id'))
             ->update([
                 'name' => $data->input('name'),
@@ -92,6 +100,7 @@ class AdminLTEController extends Controller
 
     public function delete($user_id)
     {   
+        //路徑確認
         if(url()->previous() == 'http://127.0.0.1:8000/' or url()->previous() == 'http://127.0.0.1:8000/search'){
             User::destroy($user_id);
             return redirect('/');
@@ -102,6 +111,7 @@ class AdminLTEController extends Controller
 
     public function search(Request $user_username)
     {   
+        //搜尋
         $users_search = User::where('username',$user_username->username)->get();
         return view('/search',compact('users_search')); 
     }

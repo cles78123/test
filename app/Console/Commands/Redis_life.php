@@ -40,12 +40,13 @@ class Redis_life extends Command
      */
     public function handle()
     {
+        //最新一筆
         $date = Hamlet::max('created_at');
         $data = Hamlet::where('created_at',$date)->get(); 
-
+        //redis設定
         $listKey = 'DATA:LIST';
         $hashKey = 'HASH:DATA:LIST:';
-
+        //資料庫塞入redis
         foreach($data as $key => $i){ 
             Redis::rpush($listKey,$key);
             Redis::hMset($hashKey.$key,array(
@@ -63,8 +64,10 @@ class Redis_life extends Command
                 'move_in' => $data[$key]["move_in"],
                 'move_out' => $data[$key]["move_out"],
             ));
+            //存活時間hash
             Redis::expire($hashKey.$key,600);
         }
+        //存活時間lsit
         Redis::expire($listKey,600);
        
     }

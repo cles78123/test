@@ -23,6 +23,7 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
+//admin
 Route::get('/', 'AdminLTEController@index');
 Route::get('home', 'AdminLTEController@index');
 Route::get('insert','AdminLTEController@insert');
@@ -32,5 +33,6 @@ Route::post('update','AdminLTEController@update')->name('update');
 Route::get('delete/{user_id}','AdminLTEController@delete');
 Route::post('search', 'AdminLTEController@search');
 
+//hamlet
 Route::get('hamlet', 'HamletController@index');
 Route::post('hamlet/search', 'HamletController@search');
