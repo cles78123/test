@@ -24,7 +24,7 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 //admin
-Route::get('/', 'AdminLTEController@index');
+Route::get('', 'AdminLTEController@index');
 Route::get('home', 'AdminLTEController@index');
 Route::get('insert','AdminLTEController@insert');
 Route::post('insert','AdminLTEController@insert')->name('insert');
