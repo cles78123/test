@@ -30,10 +30,9 @@ class HamletController extends Controller
     public function index()
     {
         //所有里
-        $data = Hamlet::where('location','like','%'); 
-        $location = $data->groupby('location')->get();
+        $location = Hamlet::where('location','like','%')->groupby('location')->get();
         //首頁顯示
-        $data =  $data->simplePaginate(15);
+        $data =  Hamlet::where('location','like','%')->orderBy('created_at','desc')->simplePaginate(15);
         return view('/hamlet' ,compact('location') ,compact('data'));
     }
 
@@ -48,11 +47,14 @@ class HamletController extends Controller
         if(empty(Redis::exists($listKey))){
             if($keywords->location == '0'){
                 $data_search_sql = Hamlet::where($keywords->type,$keywords->calculate,$keywords->keyword)
+                ->orderBy('created_at','desc')
                 ->simplePaginate(15);
             }else{
                 //如果搜尋全部里
                 $data_search_sql = Hamlet::where($keywords->type,$keywords->calculate,$keywords->keyword)
-                ->where('location',$keywords->location)->simplePaginate(15);
+                ->where('location',$keywords->location)
+                ->orderBy('created_at','desc')
+                ->simplePaginate(15);
             }
             //重資料庫抓
             foreach($data_search_sql as $key => $i){ 
